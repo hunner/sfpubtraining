@@ -1,0 +1,10 @@
+Host: <%= fqdn %>
+Domain: <%= domain %>
+Free Memory: <%= memoryfree %>
+Operating System: <%= operatingsystem %>
+Interfaces:
+<% interfaces.split(',').each do |interface| -%>
+<% if has_variable?("ipaddress_" + interface) then -%>
+  <%= interface.gsub("_",":") %> address: <%= eval("ipaddress_" + interface) %>
+<% end -%>
+<% end -%>
