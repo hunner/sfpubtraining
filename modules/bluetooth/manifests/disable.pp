@@ -1,16 +1,19 @@
-class bluetooth::disable inherits bluetooth {
-  Package['bluez-libs'] {
+class bluetooth::disable {
+  package { 'bluez-libs':
     ensure  => absent,
     require => Package['bluez-utils'],
-    before  => undef,
   }
-  Package['bluez-utils'] {
+
+  package { 'bluez-utils':
     ensure => absent,
-    before => undef,
   }
-  Service['hidd'] {
+
+  service { 'hidd':
     ensure  => stopped,
     enable  => false,
     before => Package['bluez-utils'],
+    hasstatus  => true,
+    hasrestart => true,
+    status     => 'source /etc/init.d/functions && status hidd',
   }
 }
