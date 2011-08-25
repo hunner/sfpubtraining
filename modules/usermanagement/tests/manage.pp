@@ -1,9 +1,9 @@
 include usermanagement
 usermanagement::manage { "hunner":
-  ensure => absent,
+  ensure => present,
   group  => "hunner",
 }
 usermanagement::manage { "elvis":
-  ensure => absent,
+  ensure => present,
   group => "elvis",
 }
