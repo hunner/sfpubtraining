@@ -1,4 +1,5 @@
 ---
+location: "here"
 foo:
   - "something long"
   - "something short"

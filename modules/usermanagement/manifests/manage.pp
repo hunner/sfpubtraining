@@ -1,7 +1,7 @@
 define usermanagement::manage (
   $ensure,
   $homedir = "default",
-  $group = "users"
+  $group = $usermanagement::params::group
 ) {
 
   if $name == 'root' {
@@ -9,7 +9,7 @@ define usermanagement::manage (
   }
 
   if $homedir == "default" {
-    $homedir_real = "/home/${name}"
+    $homedir_real = "${usermanagement::params::home}/${name}"
   } else {
     $homedir_real = $homedir
   }

@@ -1,6 +1,5 @@
 class usermanagement {
-  $home = "/home"
-  file { $home:
+  file { $usermanagement::params::home:
     ensure => directory,
     owner  => "root",
     group  => "root",
