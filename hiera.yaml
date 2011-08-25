@@ -1,0 +1,13 @@
+---
+:backends:
+  - yaml
+  - puppet
+:hierarchy:
+  - %{location}/%{fqdn}
+  - %{dc}/%{queue}/%{rack}
+  - common
+:yaml:
+  :datadir: /etc/puppetlabs/puppet/hieradata
+
+:puppet:
+  :datasource: data

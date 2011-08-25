@@ -1,0 +1,12 @@
+---
+foo:
+  - "something long"
+  - "something short"
+packages:
+  one: "the number one"
+  two: "the number two"
+  three: "override me"
+classes:
+  - ntp
+  - dns
+  - iptables

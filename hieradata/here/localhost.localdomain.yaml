@@ -1,0 +1,9 @@
+---
+foo:
+  - "host specific"
+packages:
+  three: "the number three"
+classes:
+  - db_server
+  - web_server
+  - dev_accounts
