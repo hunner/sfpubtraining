@@ -3,6 +3,11 @@ define usermanagement::manage (
   $homedir = "default",
   $group = "users"
 ) {
+
+  if $name == 'root' {
+    fail("You can't manage root with usermanagement::manage")
+  }
+
   if $homedir == "default" {
     $homedir_real = "/home/${name}"
   } else {
@@ -17,7 +22,6 @@ define usermanagement::manage (
     recurse => true,
     owner   => $name,
     group   => $group,
-    require => Class["usermanagement"],
   }
 
   user { $name:
@@ -25,9 +29,9 @@ define usermanagement::manage (
     gid    => $group,
   }
 
-  if ! defined(Group['users']) {
+  if ! defined(Group[$group]) {
     if $ensure == "present" {
-      group { "users":
+      group { $group:
         ensure => present,
       }
     }
